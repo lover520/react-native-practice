@@ -1,18 +1,20 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet, NativeModules} from 'react-native';
 import Component1 from './component1';
 // create a component
-class MyClass extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Component1 />
-        <Text>MyClass</Text>
-      </View>
-    );
-  }
-}
+const MyClass = () => {
+  const cheroModule = NativeModules.CheroModule;
+  cheroModule.getVersion((a: Number) => {
+    console.log('mydebug:', a);
+  });
+  return (
+    <View style={styles.container}>
+      <Component1 />
+      <Text>MyClass</Text>
+    </View>
+  );
+};
 
 // define your styles
 const styles = StyleSheet.create({

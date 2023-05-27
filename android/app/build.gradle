@@ -147,6 +147,11 @@ android {
         }
     }
 }
+  repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
@@ -165,6 +170,12 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation(name: 'Android_CheroSdk_V1.1.2',ext:'aar')
+    implementation(name: 'Android_EcgParser_V1.1.4',ext:'aar')
+    implementation(name: 'Android_TempParser_V1.1.0',ext:'aar')
+    implementation(name: 'Android_SpO2Parser_V1.0.0',ext:'aar')
+    implementation(name: 'Android_POzParser_V1.0.0', ext: 'aar')
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
