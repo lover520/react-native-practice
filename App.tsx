@@ -1,7 +1,7 @@
 //import liraries
 import React from 'react';
 import {View, Text, StyleSheet, NativeModules} from 'react-native';
-import Component1 from './component1';
+import Bluetooth from './Bluetooth';
 // create a component
 const MyClass = () => {
   const cheroModule = NativeModules.CheroModule;
@@ -10,7 +10,7 @@ const MyClass = () => {
   });
   return (
     <View style={styles.container}>
-      <Component1 />
+      <Bluetooth />
       <Text>MyClass</Text>
     </View>
   );
