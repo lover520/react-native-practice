@@ -5,6 +5,7 @@ import Bluetooth from './Bluetooth';
 // create a component
 const MyClass = () => {
   const cheroModule = NativeModules.CheroModule;
+  cheroModule.initialize();
   cheroModule.getVersion((a: Number) => {
     console.log('mydebug:', a);
   });

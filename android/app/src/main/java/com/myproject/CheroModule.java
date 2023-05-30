@@ -29,19 +29,25 @@ public class CheroModule extends ReactContextBaseJavaModule {
         return "CheroModule";
     }
 
-    // @ReactMethod
-    // public void initialize() {
-    // bindViews();
-    // mHandler = new Handler() {
-    // @Override
-    // public void handleMessage(Message msg) {
-    // onReceiveEvent(msg);
-    // }
-    // };
-    // // 初始化 ChSdkManager
-    // ChSdkManager.getInstance().init(mHandler,
-    // reactContext.getApplicationContext());
-    // }
+    // 获取心电SDK版本号
+    @ReactMethod
+    public void getVersion(Callback successCallback) {
+        successCallback.invoke(ChSdkManager.getInstance().getVersion());
+    }
+
+    // 初始化接口
+    @ReactMethod
+    public void initialize() {
+        // mHandler = new Handler() {
+        // @Override
+        // public void handleMessage(Message msg) {
+        // onReceiveEvent(msg);
+        // }
+        // };
+        // 初始化 ChSdkManager
+        ChSdkManager.getInstance().init(null,
+                reactContext.getApplicationContext());
+    }
 
     // private void bindViews() {
     // // 绑定视图的逻辑
@@ -50,11 +56,4 @@ public class CheroModule extends ReactContextBaseJavaModule {
     // private void onReceiveEvent(Message msg) {
     // // 处理接收到的事件的逻辑
     // }
-
-    // 获取心电SDK版本号
-    @ReactMethod
-    public void getVersion(Callback successCallback) {
-        successCallback.invoke(ChSdkManager.getInstance().getVersion());
-    }
-    // 初始化接口
 }

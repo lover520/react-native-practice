@@ -16,6 +16,7 @@ import {
   FlatList,
   TouchableHighlight,
   Pressable,
+  Button,
 } from 'react-native';
 
 import BleManager, {
@@ -50,7 +51,6 @@ const Bluetooth = () => {
   );
 
   console.debug('peripherals map updated', [...peripherals.entries()]);
-
   const addOrUpdatePeripheral = (id: string, updatedPeripheral: Peripheral) => {
     // new Map() enables changing the reference & refreshing UI.
     // TOFIX not efficient.
@@ -347,7 +347,12 @@ const Bluetooth = () => {
             {'Retrieve connected peripherals'}
           </Text>
         </Pressable>
-
+        <Button
+          title="show"
+          onPress={() => {
+            console.log(peripherals);
+          }}
+        />
         {Array.from(peripherals.values()).length === 0 && (
           <View style={styles.row}>
             <Text style={styles.noPeripherals}>
@@ -355,7 +360,6 @@ const Bluetooth = () => {
             </Text>
           </View>
         )}
-
         <FlatList
           data={Array.from(peripherals.values())}
           contentContainerStyle={{rowGap: 12}}
