@@ -11,9 +11,10 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
+import android.util.Log;
 public class CheroModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;
-
+    private Handler mHandler;
     // public CheroModule(ReactApplicationContext context) {
     // super(context);
     // reactContext = context;
@@ -44,16 +45,25 @@ public class CheroModule extends ReactContextBaseJavaModule {
         // onReceiveEvent(msg);
         // }
         // };
+        Looper mainLooper = Looper.getMainLooper();
+        mHandler = new Handler(mainLooper) {
+            @Override
+            public void handleMessage(Message msg) {
+                onReceiveEvent(msg);
+            }
+        };
         // 初始化 ChSdkManager
-        ChSdkManager.getInstance().init(null,
-                reactContext.getApplicationContext());
+        Log.d("tag", "mHandler 初始化：" + mHandler.toString());
+        boolean initResult = ChSdkManager.getInstance().init(mHandler, reactContext.getApplicationContext());
+        Log.d("tag", "ChSdkManager 初始化：" + initResult);
     }
-
+    
     // private void bindViews() {
     // // 绑定视图的逻辑
     // }
 
-    // private void onReceiveEvent(Message msg) {
-    // // 处理接收到的事件的逻辑
-    // }
+    private void onReceiveEvent(Message msg) {
+    // 处理接收到的事件的逻辑
+        
+    }
 }
