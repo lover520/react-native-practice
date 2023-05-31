@@ -15,7 +15,6 @@ import android.util.Log;
 public class CheroModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;
     private Handler mHandler;
-    private Handler mHandler;
     // public CheroModule(ReactApplicationContext context) {
     // super(context);
     // reactContext = context;
