@@ -15,6 +15,7 @@ import android.util.Log;
 public class CheroModule extends ReactContextBaseJavaModule {
     private static ReactApplicationContext reactContext;
     private Handler mHandler;
+    private Handler mHandler;
     // public CheroModule(ReactApplicationContext context) {
     // super(context);
     // reactContext = context;
@@ -39,12 +40,6 @@ public class CheroModule extends ReactContextBaseJavaModule {
     // 初始化接口
     @ReactMethod
     public void initialize() {
-        // mHandler = new Handler() {
-        // @Override
-        // public void handleMessage(Message msg) {
-        // onReceiveEvent(msg);
-        // }
-        // };
         Looper mainLooper = Looper.getMainLooper();
         mHandler = new Handler(mainLooper) {
             @Override
@@ -52,8 +47,6 @@ public class CheroModule extends ReactContextBaseJavaModule {
                 onReceiveEvent(msg);
             }
         };
-        // 初始化 ChSdkManager
-        Log.d("tag", "mHandler 初始化：" + mHandler.toString());
         boolean initResult = ChSdkManager.getInstance().init(mHandler, reactContext.getApplicationContext());
         Log.d("tag", "ChSdkManager 初始化：" + initResult);
     }
@@ -63,7 +56,6 @@ public class CheroModule extends ReactContextBaseJavaModule {
     // }
 
     private void onReceiveEvent(Message msg) {
-    // 处理接收到的事件的逻辑
-        
+        // 处理接收到的事件的逻辑
     }
 }
